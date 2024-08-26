@@ -19,7 +19,7 @@ const start = async () => {
   });
 
     const { url } = await startStandaloneServer(server, {
-      listen: { port: 4002 }, // Change le port ici
+      listen: { port: 4004 }, 
     });
 
   console.log(`🚀 Server ready at ${url}`);
