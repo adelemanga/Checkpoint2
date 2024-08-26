@@ -32,10 +32,24 @@ class CountryResolver {
   async createNewCountry(@Arg("data") newCountryData: NewCountryInput) {
     const resultFromSave = await Country.save({
       ...newCountryData,
-    })
-
+    });
     return resultFromSave;
   }
+
+  @Query(() => Country)
+  async getCountryByCode(@Arg("CountryCode") CountryCode: string) {
+    const country = await Country.findOneByOrFail({ code: CountryCode });
+    return country;
+  }
+
+  @Query(() => Country)
+  async getCountryByContinent(
+    @Arg("CountryContinent") CountryContinent: string) {
+    const country1 = await Country.findOneByOrFail({ continent: CountryContinent });
+    return country1;
+  }
 }
+
+
 
 export default CountryResolver;
